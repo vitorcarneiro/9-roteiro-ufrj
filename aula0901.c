@@ -32,7 +32,7 @@ $Log$
 #include <time.h>
 
 tipoErros
-ExibirConteudoArquivo (char *original)
+ExibirConteudoArquivo (char *nomeArquivo)
 {
 	unsigned long long valor, indice;
 	
@@ -41,10 +41,10 @@ ExibirConteudoArquivo (char *original)
 	FILE *original;
 	size_t lidos;
 
-	original = fopen(original,"r");
+	original = fopen(nomeArquivo,"r");
 	if (original == NULL) 
 	{
-		printf ("Nao foi possivel abrir o arquivo \"%s\" para leitura.\n", original);
+		printf ("Nao foi possivel abrir o arquivo \"%s\" para leitura.\n", nomeArquivo);
 		printf ("Erro (#%i) : %s\n", errno, strerror(errno));
 		return erroAbrindoArquivo;
 	}
@@ -92,7 +92,7 @@ ExibirConteudoArquivo (char *original)
 		return erroAbrindoArquivo;
 	}
 
-	printf("Arquivo \"%s\" codificado.\n", original);
+	printf("Arquivo \"%s\" codificado.\n", nomeArquivo);
 
 	return ok;
 }
