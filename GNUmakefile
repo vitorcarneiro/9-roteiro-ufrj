@@ -145,9 +145,10 @@ AULA0809OBJS = aula0801.o aula0809.o libbase.a
 
 
 # -- Roteiro 9 \/ ---------------------------------------------------------------------------------
-AULA09 = aula0902
+AULA09 = aula0902 aula0903
 
 AULA0902OBJS = aula0901.o aula0902.o libarquivos.a
+AULA0903OBJS = aula0901.o aula0903.o libarquivos.a
 # -- Roteiro 9 /\ ---------------------------------------------------------------------------------
 # /\ OBJS MACROS/\ --------------------------------------------------------------------------------
 
@@ -231,7 +232,8 @@ EXECS = aula0101\
 		aula0807\
 		aula0808\
 		aula0809\
-		aula0902
+		aula0902\
+		aula0903
 
 
 LIBS =	libmatematicarecursao.a\
@@ -510,6 +512,10 @@ libarquivos.a: $(LIBARQUIVOSOBJS)
 
 aula0902: $(AULA0902OBJS)
 	$(LD) $(LFLAGS) -o $@ $(AULA0902OBJS) -L. -larquivos
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALETO)
+
+aula0903: $(AULA0903OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0903OBJS) -L. -larquivos
 	cp -f $@ $@-$(OS)-$(CC)-$(DIALETO)
 # -- Roteiro 9 /\ ----------------------------------------------------------------------------------
 
