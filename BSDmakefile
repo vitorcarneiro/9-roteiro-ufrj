@@ -129,6 +129,13 @@ AULA0807OBJS = aula0801.o aula0807.o libbase.a
 AULA0808OBJS = aula0801.o aula0808.o libbase.a
 AULA0809OBJS = aula0801.o aula0809.o libbase.a
 # -- Roteiro 8 /\ ---------------------------------------------------------------------------------
+
+
+# -- Roteiro 9 \/ ---------------------------------------------------------------------------------
+AULA09 = aula0902
+
+AULA0902OBJS = aula0901.o aula0902.o libarquivos.a
+# -- Roteiro 9 /\ ---------------------------------------------------------------------------------
 # /\ OBJS MACROS/\ --------------------------------------------------------------------------------
 
 
@@ -154,6 +161,11 @@ LIBMONITOR = libmonitor.a
 LIBBASEOBJS = aula0801.o
 LIBBASE = libbase.a
 # -- Roteiro 8 /\ ---------------------------------------------------------------------------------
+
+# -- Roteiro 9 \/ ---------------------------------------------------------------------------------
+LIBARQUIVOSOBJS = aula0901.o
+LIBARQUIVOS = libarquivos.a
+# -- Roteiro 9 /\ ---------------------------------------------------------------------------------
 # /\ LIBS MACROS/\ --------------------------------------------------------------------------------
 
 
@@ -202,7 +214,8 @@ EXECS = aula0101\
 		aula0806\
 		aula0807\
 		aula0808\
-		aula0809
+		aula0809\
+		aula0902
 
 LIBS =	libmatematicarecursao.a\
 	libmatematicadowhile.a\
@@ -212,7 +225,9 @@ LIBS =	libmatematicarecursao.a\
 	libbase.a\
 	libmatematica.a\
 	libmonitor.a\
-	libbase.a
+	libbase.a\
+	libarquivos.a
+
 
 
 ALL = $(EXECS) $(LIBS)
@@ -469,6 +484,18 @@ aula0809: $(AULA0809OBJS)
 	$(LD) $(LFLAGS) -o $@ $(AULA0809OBJS) -L. -lbase
 	cp -f $@ $@-$(OS)-$(CC)-$(DIALETO)
 # -- Roteiro 8 /\ ----------------------------------------------------------------------------------
+
+# -- Roteiro 9 \/ ----------------------------------------------------------------------------------
+aula09: $(AULA09)
+
+libarquivos.a: $(LIBARQUIVOSOBJS)
+	ar -r -c $@ $(LIBARQUIVOSOBJS)
+
+aula0902: $(AULA0902OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0902OBJS) -L. -larquivos
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALETO)
+# -- Roteiro 9 /\ ----------------------------------------------------------------------------------
+
 
 .PHONY: clean clean-all clean-objs clean-freebsd clean-linux clean-gcc clean-clang clean-ansi clean-c89 clean-c90 clean-c99 clean-c11
 
